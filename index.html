@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎂</title>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ffccd5;
+            --bg: #fff0f3;
+            --text: #590d22;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* --- Main Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffccd5 0%, #fff0f3 100%);
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; animation: pop 1s ease; }
+        
+        @keyframes pop {
+            0% { transform: scale(0.5); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-container { margin-top: 30px; }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        button:hover { transform: translateY(-3px); background-color: #c9184a; }
+
+        /* --- Modals --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px; right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary);
+            z-index: 10;
+        }
+
+        /* --- Photo Frame Slider Section --- */
+        .slider-container {
+            position: relative;
+            background: #fff;
+            padding: 15px 15px 60px 15px; /* Bottom space for frame look */
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border: 2px solid #eee;
+            animation: fade 0.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4} to {opacity: 1}
+        }
+
+        /* Slider Buttons */
+        .nav-btn {
+            position: absolute;
+            bottom: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        /* --- Letter Section --- */
+        .letter-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: left;
+            white-space: pre-line;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Page -->
+    <div class="hero">
+        <p>Hey Devisree! ❤️</p>
+        <h1>Wish You a Happy Birthday ! 🎂✨</h1>
+        <p>I made something small for you...</p>
+
+        <div class="btn-container">
+            <button onclick="openModal('photoModal')">📸 View Memories</button>
+            <button onclick="openModal('letterModal')">💌 Read My Letter</button>
+        </div>
+    </div>
+
+    <!-- Photos Modal with Frame & Slider -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('photoModal')">&times;</span>
+            <h2 style="margin-bottom: 5px;"> Memories 💖</h2>
+            
+            <div class="slider-container">
+                <!-- Replace these with your real photo URLs -->
+                <img class="mySlides" src="assets/a.jpeg">
+                <img class="mySlides" src="assets/ab.jpeg">
+                <img class="mySlides" src="assets/b.jpeg">
+                <img class="mySlides" src="assets/c.jpeg">
+                <img class="mySlides" src="assets/sree.jpeg">
+                <img class="mySlides" src="assets/d5.jpeg">
+                <img class="mySlides" src="assets/d6.jpeg">
+                <img class="mySlides" src="assets/d7.jpeg">
+                <img class="mySlides" src="assets/d8.jpeg">
+                <img class="mySlides" src="assets/t.jpeg">
+                <img class="mySlides" src="assets/d.jpeg">
+                <img class="mySlides" src="assets/d2.jpeg">
+                <img class="mySlides" src="assets/d3.jpeg">
+                <img class="mySlides" src="assets/vd.jpeg">
+                <img class="mySlides" src="assets/vk.jpeg">
+                
+                <button class="nav-btn prev-btn" onclick="plusSlides(-1)">❮ Prev</button>
+                <button class="nav-btn next-btn" onclick="plusSlides(1)">Next ❯</button>
+            </div>
+            <p id="caption" style="margin-top: 15px; font-style: italic; color: #888;">Swipe to see more!</p>
+        </div>
+    </div>
+
+    <!-- Letter Modal -->
+<div id="letterModal" class="modal">
+    <div class="modal-content" style="max-height: 85vh; overflow-y: auto; padding: 30px 20px;">
+        <span class="close-btn" onclick="closeModal('letterModal')" style="position: sticky; top: 0; float: right;">&times;</span>
+        
+        <h2 style="color: var(--primary); text-align: center; margin-bottom: 20px;">Dear Devisree,</h2>
+        
+        <div class="letter-text" style="white-space: pre-line; text-align: justify; font-size: 1.05rem;">
+            Inaikku unga birthday, so I wanted to tell you how much you mean to me. 
+
+            Hi Devisree Wish You a Happy Birthday!!!. Epdi irukka? I know indha birthday unaku epdi irukum nu neeye solliruka enta pudikavey illa nu but irundhalu enjoy pannu ellam maaarum. 
+            
+            Un frnds Yasar, Prena, Pongothai ipdi ellarum gifts vangi kuduthurukanga unkaga and Perima vuh unaku earpods and watch gift pannirukanga idhelam unaku pudikum pudichurum. And my side la irundhu enala mudinjatha nah gift pannirukeh adhu pudikum nu nenaikireh ilanalum adjust panniko sorry. 
+            
+            Life la nadanthatha nenachu ipa iruka present ah vitra vendam kashtam dha irundhalu solreh avlo dha. Enakey theriyama nah una vittu thoorama poiteh enaku pesa varala convince panna varala ellathukum silent ah poga start pannitey ipdi maariteh late ah tha realise panney but palaya maari irukka dha try pannrey but edho point la silent ah vey dha irukey and maathikirey really sorry for that.
+
+            Once again a very happiest birthday papu!!!!... 
+            You are one of the best things that happened in my life. This year is going to be amazing for you! Always stay happy and keep smiling. 
+
+            <b>Love you lots! ❤️</b>
+            <b>- [Your______]</b>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // Modal Logic
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+            if(id === 'photoModal') {
+                showSlides(slideIndex);
+            }
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        // Slider Logic
+        let slideIndex = 1;
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+
+        // Close on outside click
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
